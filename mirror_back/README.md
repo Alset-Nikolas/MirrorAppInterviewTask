@@ -54,3 +54,4 @@ poetry add <библиотека>=<версия>
 alembic revision --autogenerate -m "Added account table"
 alembic upgrade heads
 ```
+

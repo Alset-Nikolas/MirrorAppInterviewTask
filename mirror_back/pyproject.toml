@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "gpt-back"
+name = "mirror-back"
 version = "0.1.0"
 description = ""
-authors = ["nekrasov <nekrasov.aleks@mail.ru>"]
+authors = ["Nikoly <Alset.Nikolas@yandex.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
