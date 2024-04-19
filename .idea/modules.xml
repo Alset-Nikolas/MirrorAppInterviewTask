@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/MirrorAppInterviewTask.iml" filepath="$PROJECT_DIR$/.idea/MirrorAppInterviewTask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mirror_back/.idea/gpt_back.iml" filepath="$PROJECT_DIR$/mirror_back/.idea/gpt_back.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mirror_back/.idea/mirror_back.iml" filepath="$PROJECT_DIR$/mirror_back/.idea/mirror_back.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mirror_back/src_mirror_back/.idea/src_mirror_back.iml" filepath="$PROJECT_DIR$/mirror_back/src_mirror_back/.idea/src_mirror_back.iml" />
+    </modules>
+  </component>
+</project>

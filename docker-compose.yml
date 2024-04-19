@@ -1,0 +1,44 @@
+version: "3"
+services:
+  mirror_back:
+    build: ./mirror_back
+    container_name: mirror.mirror_back
+    volumes:
+      - ./mirror_back:/usr/mirror_back
+    depends_on:
+      mirror_postgres:
+        condition: service_healthy
+    logging:
+      options:
+        max-file: "10"
+        max-size: 10m
+    ports:
+      - "8084:8084"
+    command: [ "sh", "-c", "alembic upgrade heads ; uvicorn asgi:app --host 0.0.0.0 --port 8084" ]
+    environment:
+      - TYPE_ENV=docker
+    env_file:
+      - mirror_back/.env.docker
+
+
+  mirror_postgres:
+    build: ./postgres
+    container_name: mirror.mirror_postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data/
+    ports:
+      - 5466:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=qwerty
+      - POSTGRES_DB=mirror_back
+    logging:
+      options:
+        max-file: "10"
+        max-size: 10m
+    healthcheck:
+      start_period: 5s
+      interval: 5s
+      retries: 10
+      timeout: 5s
+      test: "pg_isready -q -d mirror_back -U postgres"

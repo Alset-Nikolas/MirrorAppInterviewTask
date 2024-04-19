@@ -1,0 +1,114 @@
+[tool.poetry]
+name = "gpt-back"
+version = "0.1.0"
+description = ""
+authors = ["nekrasov <nekrasov.aleks@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9.13"
+SQLAlchemy = { version = "^1.4.44", extras = ["mypy"] }
+alembic = "1.8.1"
+asyncpg = "0.26.0"
+faker = "13.15.1"
+SQLAlchemy-Utils = "0.38.3"
+pydantic = { version = "1.9.2", extras = ["dotenv"] }
+psycopg2-binary = "2.9.3"
+sentry-sdk = { version = "1.35.0", extras = ["fastapi"] }
+fastapi = "0.85.0"
+uvicorn = "0.18.3"
+fastapi-jsonapi = "0.2.2"
+python-slugify = "^8.0.1"
+sqladmin = "^0.15.1"
+requests = "2.29.0"
+python-jose = "^3.3.0"
+passlib = "^1.7.4"
+aiohttp = "^3.9.1"
+itsdangerous = "^2.1.2"
+yarl = "1.7.2"
+fastapi-jsonrpc = "2.4.1"
+openai = "^0.28.1"
+bcrypt = "^4.1.2"
+tiktoken = "^0.5.2"
+pytest-asyncio = "^0.23.6"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.2"
+bandit = "^1.7.4"
+isort = { version = "^5.10.1", extras = ["colors"] }
+black = "^22.3.0"
+pre-commit = "^2.20.0"
+mypy = "^0.971"
+types-simplejson = "^3.18.0.0"
+wemake-python-styleguide = "^0.16.1"
+pytest-cov = "^4.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+extend_skip_glob = [
+    "migrations",
+]
+
+profile = "black"
+py_version = 310
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+
+[tool.mypy]
+files = [
+    "bot",
+]
+python_version = "3.9"
+
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+disallow_any_generics = true
+check_untyped_defs = true
+no_implicit_optional = true
+ignore_errors = false
+ignore_missing_imports = true
+strict_optional = true
+warn_unused_configs = true
+disallow_any_explicit = false
+follow_imports = "silent"
+no_implicit_reexport = true
+
+plugins = [
+    "pydantic.mypy",
+    "sqlalchemy.ext.mypy.plugin"
+]
+
+[[tool.mypy.overrides]]
+module = [
+    "aiohttp.abc.*",
+]
+
+no_implicit_reexport = false
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+target-version = ["py39"]
+color = true
+extend-exclude = """
+^/(migrations)/
+"""
+
+[tool.bandit]
+skips = ["B311"]
