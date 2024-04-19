@@ -1,0 +1,600 @@
+[flake8]
+extend-exclude =
+  venv
+  .venv
+  .git
+  __pycache__
+  migrations/*.py
+
+max-complexity = 10
+max-line-length = 120
+max-doc-length = 79
+statistics = True
+doctests = True
+no-accept-encodings = True
+show-source = True
+count = True
+max-arguments = 10
+max-imports = 25
+max-line-complexity = 18
+max-methods = 15
+max-module-members = 10
+max-import-from-members = 10
+max-local-variables = 7
+max-string-usages = 8
+
+# Flake plugins:
+inline-quotes = single
+accept-encodings = utf-8
+classmethod-decorators =
+    classmethod
+    validator
+
+per-file-ignores =
+  bot/__init__.py: WPS410, WPS412
+
+extend-ignore =
+;    B001, # Do not use bare except:
+;    B002, # Python does not support the unary prefix increment.
+;    B003, # Assigning to os.environ doesn't clear the environment.
+;    B004, # Using hasattr(x, '__call__') to test if x is callable is unreliable.
+;    B005, # Using .strip() with multi-character strings is misleading the reader.
+;    B006, # Do not use mutable data structures for argument defaults.
+;    B007, # Loop control variable not used within the loop body.
+;    B008, # Do not perform function calls in argument defaults.
+;    C400, # Rewrite list(f(x) for x in foo) as [f(x) for x in foo]
+;    C401, # Rewrite set(f(x) for x in foo) as {f(x) for x in foo}
+;    C402, # Rewrite dict((x, f(x)) for x in foo) as {x: f(x) for x in foo}
+;    C403, # Rewrite set([f(x) for x in foo]) as {f(x) for x in foo}
+;    C404, # Rewrite dict([(x, f(x)) for x in foo]) as {x: f(x) for x in foo}
+;    C405, # Unnecessary <list> literal - rewrite as a <set> literal.
+;    C406, # Unnecessary <tuple> literal - rewrite as a <dict> literal.
+;    C408, # Unnecessary <dict/list/tuple> call - rewrite as a literal.
+;    C409, # Unnecessary <list> passed to <list>() - (remove the outer call to <list>``()/rewrite as a ``<list> literal).
+;    C410, # Unnecessary <tuple> passed to <tuple>() - (remove the outer call to <tuple>``()/rewrite as a ``<tuple> literal).
+;    C411, # Rewrite list([f(x) for x in foo]) as [f(x) for x in foo]
+;    C812, # missing trailing comma
+;    C813, # missing trailing comma in Python 3
+;    C814, # missing trailing comma in Python 2
+;    C815, # missing trailing comma in Python 3.5+
+;    C816, # missing trailing comma in Python 3.6+
+;    C818, # trailing comma on bare tuple prohibited
+;    C819, # trailing comma prohibited
+;    C901, # based on the complexity value provided by the user.
+    D100, # Missing docstring in public module
+    D101, # Missing docstring in public class
+    D102, # Missing docstring in public method
+    D103, # Missing docstring in public function
+    D104, # Missing docstring in public package
+    D105, # Missing docstring in magic method
+    D106, # Missing docstring in public nested class
+    D107, # Missing docstring in __init__
+;    D200, # One-line docstring should fit on one line with quotes
+;    D201, # No blank lines allowed before function docstring
+;    D202, # No blank lines allowed after function docstring
+;    D203, # 1 blank line required before class docstring
+;    D204, # 1 blank line required after class docstring
+;    D205, # 1 blank line required between summary line and description
+;    D206, # Docstring should be indented with spaces, not tabs
+;    D207, # Docstring is under-indented
+;    D208, # Docstring is over-indented
+;    D209, # Multi-line docstring closing quotes should be on a separate line
+;    D210, # No whitespaces allowed surrounding docstring text
+;    D211, # No blank lines allowed before class docstring
+;    D212, # Multi-line docstring summary should start at the first line
+;    D213, # Multi-line docstring summary should start at the second line
+;    D214, # Section is over-indented
+;    D215, # Section underline is over-indented
+;    D300, # Use “””triple double quotes”””
+;    D301, # Use r””” if any backslashes in a docstring
+;    D302, # Deprecated: Use u””” for Unicode docstrings
+;    D400, # First line should end with a period
+;    D401, # First line should be in imperative mood
+;    D401, # First line should be in imperative mood; try rephrasing
+;    D402, # First line should not be the function’s “signature”
+;    D403, # First word of the first line should be properly capitalized
+;    D404, # First word of the docstring should not be This
+;    D405, # Section name should be properly capitalized
+;    D406, # Section name should end with a newline
+;    D407, # Missing dashed underline after section
+;    D408, # Section underline should be in the line following the section’s name
+;    D409, # Section underline should match the length of its name
+;    D410, # Missing blank line after section
+;    D411, # Missing blank line before section
+;    D412, # No blank lines allowed between a section header and its content
+;    D413, # Missing blank line after last section
+;    D414, # Section has no content
+;    D415, # First line should end with a period, question mark, or exclamation point
+;    D416, # Section name should end with a colon
+;    D417, # Missing argument descriptions in the docstring
+;    E101, # indentation contains mixed spaces and tabs
+;    E111, # indentation is not a multiple of four
+;    E112, # expected an indented block
+;    E113, # unexpected indentation
+;    E114, # indentation is not a multiple of four (comment)
+;    E115, # expected an indented block (comment)
+;    E116, # unexpected indentation (comment)
+;    E117, # over-indented
+;    E121, # continuation line under-indented for hanging indent
+;    E122, # continuation line missing indentation or outdented
+;    E123, # closing bracket does not match indentation of opening bracket’s line
+;    E124, # closing bracket does not match visual indentation
+;    E125, # continuation line with same indent as next logical line
+;    E126, # continuation line over-indented for hanging indent
+;    E127, # continuation line over-indented for visual indent
+;    E128, # continuation line under-indented for visual indent
+;    E129, # visually indented line with same indent as next logical line
+;    E131, # continuation line unaligned for hanging indent
+;    E133, # closing bracket is missing indentation
+;    E201, # whitespace after ‘(’
+;    E202, # whitespace before ‘)’
+;    E203, # whitespace before ‘,’, ‘;’, or ‘:’
+;    E211, # whitespace before ‘(’
+;    E221, # multiple spaces before operator
+;    E222, # multiple spaces after operator
+;    E223, # tab before operator
+;    E224, # tab after operator
+;    E225, # missing whitespace around operator
+;    E226, # missing whitespace around arithmetic operator
+;    E227, # missing whitespace around bitwise or shift operator
+;    E228, # missing whitespace around modulo operator
+;    E231, # missing whitespace after ‘,’, ‘;’, or ‘:’
+;    E241, # multiple spaces after ‘,’
+;    E242, # tab after ‘,’
+;    E251, # unexpected spaces around keyword / parameter equals
+;    E261, # at least two spaces before inline comment
+;    E262, # inline comment should start with ‘# ‘
+;    E265, # block comment should start with ‘# ‘
+;    E266, # too many leading ‘#’ for block comment
+;    E271, # multiple spaces after keyword
+;    E272, # multiple spaces before keyword
+;    E273, # tab after keyword
+;    E274, # tab before keyword
+;    E275, # missing whitespace after keyword
+;    E301, # expected 1 blank line, found 0
+;    E302, # expected 2 blank lines, found 0
+;    E303, # too many blank lines (3)
+;    E304, # blank lines found after function decorator
+;    E305, # expected 2 blank lines after end of function or class
+;    E306, # expected 1 blank line before a nested definition
+;    E401, # multiple imports on one line
+;    E402, # module level import not at top of file
+;    E501, # line too long (82 > 79 characters)
+;    E502, # the backslash is redundant between brackets
+;    E701, # multiple statements on one line (colon)
+;    E702, # multiple statements on one line (semicolon)
+;    E703, # statement ends with a semicolon
+;    E704, # multiple statements on one line (def)
+;    E711, # comparison to None should be ‘if cond is None:’
+;    E712, # comparison to True should be ‘if cond is True:’ or ‘if cond:’
+;    E713, # test for membership should be ‘not in’
+;    E714, # test for object identity should be ‘is not’
+;    E721, # do not compare types, use ‘isinstance()’
+;    E722, # do not use bare except, specify exception instead
+;    E731, # do not assign a lambda expression, use a def
+;    E741, # do not use variables named ‘l’, ‘O’, or ‘I’
+;    E742, # do not define classes named ‘l’, ‘O’, or ‘I’
+;    E743, # do not define functions named ‘l’, ‘O’, or ‘I’
+;    E901, # SyntaxError or IndentationError
+;    E902, # IOError
+;    W191, # indentation contains tabs
+;    W291, # trailing whitespace
+;    W292, # no newline at end of file
+;    W293, # blank line contains whitespace
+;    W391, # blank line at end of file
+;    W503, # line break before binary operator
+;    W504, # line break after binary operator
+;    W505, # doc line too long (82 > 79 characters)
+;    W601, # .has_key() is deprecated, use ‘in’
+;    W602, # deprecated form of raising exception
+;    W603, # ‘<>’ is deprecated, use ‘!=’
+;    W604, # backticks are deprecated, use ‘repr()’
+;    W605, # invalid escape sequence ‘x’
+;    W606, # ‘async’ and ‘await’ are reserved keywords starting with Python 3.7
+;    E800, # Found commented out code
+;    F401, # module imported but unused
+;    F402, # import module from line N shadowed by loop variable
+;    F403, # ‘from module import *’ used; unable to detect undefined names
+;    F404, # future import(s) name after other statements
+;    F405, # name may be undefined, or defined from star imports: module
+;    F406, # ‘from module import *’ only allowed at module level
+;    F407, # an undefined __future__ feature name was imported
+;    F501, # invalid % format literal
+;    F502, # % format expected mapping but got sequence
+;    F503, # % format expected sequence but got mapping
+;    F504, # % format unused named arguments
+;    F505, # % format missing named arguments
+;    F506, # % format mixed positional and named arguments
+;    F507, # % format mismatch of placeholder and argument count
+;    F508, # % format with * specifier requires a sequence
+;    F509, # % format with unsupported format character
+;    F521, # .format(...) invalid format string
+;    F522, # .format(...) unused named arguments
+;    F523, # .format(...) unused positional arguments
+;    F524, # .format(...) missing argument
+;    F525, # .format(...) mixing automatic and manual numbering
+;    F541, # f-string without any placeholders
+;    F601, # dictionary key name repeated with different values
+;    F602, # dictionary key variable name repeated with different values
+;    F621, # too many expressions in an assignment with star-unpacking
+;    F622, # two or more starred expressions in an assignment (a, *b, *c = d)
+;    F631, # assertion test is a tuple, which is always True
+;    F632, # use ==/!= to compare str, bytes, and int literals
+;    F633, # use of >> is invalid with print function
+;    F634, # if test is a tuple, which is always True
+;    F701, # a break statement outside of a while or for loop
+;    F702, # a continue statement outside of a while or for loop
+;    F703, # a continue statement in a finally block in a loop
+;    F704, # a yield or yield from statement outside of a function
+;    F705, # a return statement with arguments inside a generator
+;    F706, # a return statement outside of a function/method
+;    F707, # an except: block as not the last exception handler
+;    F721, # syntax error in doctest
+;    F722, # syntax error in forward annotation
+;    F723, # syntax error in type comment
+;    F811, # redefinition of unused name from line N
+;    F821, # undefined name name
+;    F822, # undefined name name in __all__
+;    F823, # local variable name … referenced before assignment
+;    F831, # duplicate argument name in function definition
+;    F841, # local variable name is assigned to but never used
+;    F901, # raise NotImplemented should be raise NotImplementedError
+    I001, # isort found an import in the wrong position
+    I002, # no configuration found (.isort.cfg or [isort] in configs)
+    I003, # isort expected 1 blank line in imports, found 0
+    I004, # isort found an unexpected blank line in imports
+    I005, # isort found an unexpected missing import
+;    N400, # Found backslash that is used for line breaking
+;    N801, # class names should use CapWords convention (class names)
+;    N802, # function name should be lowercase (function names)
+;    N803, # argument name should be lowercase (function arguments)
+;    N804, # first argument of a classmethod should be named 'cls' (function arguments)
+;    N805, # first argument of a method should be named 'self' (function arguments)
+;    N806, # variable in function should be lowercase
+;    N807, # function name should not start and end with '__'
+;    N811, # constant imported as non constant (constants)
+;    N812, # lowercase imported as non-lowercase
+;    N813, # camelcase imported as lowercase
+;    N814, # camelcase imported as constant (distinct from N817 for selective enforcement)
+;    N815, # mixedCase variable in class scope (constants, method names)
+;    N816, # mixedCase variable in global scope (constants)
+;    N817, # camelcase imported as acronym (distinct from N814 for selective enforcement)
+;    N818, # error suffix in exception names (exceptions)
+;    P101, # format string does contain unindexed parameters
+;    P102, # docstring does contain unindexed parameters
+;    P103, # other string does contain unindexed parameters
+;    P201, # format call uses too large index (INDEX)
+;    P202, # format call uses missing keyword (KEYWORD)
+;    P203, # format call uses keyword arguments but no named entries
+;    P204, # format call uses variable arguments but no numbered entries
+;    P205, # format call uses implicit and explicit indexes together
+;    P301, # format call provides unused index (INDEX)
+;    P302, # format call provides unused keyword (KEYWORD)
+; Python много взаимодействует.
+;    Q000, # Remove bad quotes
+    S101, # assert_used
+    S102, # exec_used
+    S103, # set_bad_file_permissions
+    S104, # hardcoded_bind_all_interfaces
+    S105, # hardcoded_password_string
+    S106, # hardcoded_password_funcarg
+    S107, # hardcoded_password_default
+    S108, # hardcoded_tmp_directory
+    S109, # password_config_option_not_marked_secret
+    S110, # try_except_pass
+    S111, # execute_with_run_as_root_equals_true
+    S112, # try_except_continue
+    S113, # request_without_timeout
+    S201, # flask_debug_true
+    S311, # standard pseudo-random generators are not suitable for security/cryptographic purposes
+    S324, # hashlib
+    S403, # pickle
+    S501, # request_with_no_cert_validation
+    S502, # ssl_with_bad_version
+    S503, # ssl_with_bad_defaults
+    S504, # ssl_with_no_version
+    S505, # weak_cryptographic_key
+    S506, # yaml_load
+    S507, # ssh_no_host_key_verification
+    S508, # snmp_insecure_version
+    S509, # snmp_weak_cryptography
+    S601, # paramiko_calls
+    S602, # subprocess_popen_with_shell_equals_true
+    S603, # subprocess_without_shell_equals_true
+    S604, # any_other_function_with_shell_equals_true
+    S605, # start_process_with_a_shell
+    S606, # start_process_with_no_shell
+    S607, # start_process_with_partial_path
+    S608, # hardcoded_sql_expressions
+    S609, # linux_commands_wildcard_injection
+    S610, # django_extra_used
+    S611, # django_rawsql_used
+    S701, # jinja2_autoescape_false
+    S702, # use_of_mako_templates
+    S703, # django_mark_safe
+;    T100, # Extension for flake8 that finds usage of the debugger.
+;    RST201, # Block quote ends without a blank line; unexpected unindent.
+;    RST202, # Bullet list ends without a blank line; unexpected unindent.
+;    RST203, # Definition list ends without a blank line; unexpected unindent.
+;    RST204, # Enumerated list ends without a blank line; unexpected unindent.
+;    RST205, # Explicit markup ends without a blank line; unexpected unindent.
+;    RST206, # Field list ends without a blank line; unexpected unindent.
+;    RST207, # Literal block ends without a blank line; unexpected unindent.
+;    RST208, # Option list ends without a blank line; unexpected unindent.
+;    RST210, # Inline strong start-string without end-string.
+;    RST211, # Blank line required after table.
+;    RST212, # Title underline too short.
+;    RST213, # Inline emphasis start-string without end-string.
+;    RST214, # Inline literal start-string without end-string.
+;    RST215, # Inline interpreted text or phrase reference start-string without end-string.
+;    RST216, # Multiple roles in interpreted text (both prefix and suffix present; only one allowed).
+;    RST217, # Mismatch: both interpreted text role suffix and reference suffix.
+;    RST218, # Literal block expected; none found.
+;    RST219, # Inline substitution_reference start-string without end-string.
+;    RST299, # Previously unseen warning, not yet assigned a unique code.
+;    RST301, # Unexpected indentation.
+;    RST302, # Malformed table.
+;    RST303, # Unknown directive type "XXX".
+;    RST304, # Unknown interpreted text role "XXX".
+;    RST305, # Undefined substitution referenced: "XXX".
+;    RST306, # Unknown target name: "XXX".
+;    RST307, # Error in "XXX" directive:
+;    RST399, # Previously unseen major error, not yet assigned a unique code.
+;    RST401, # Unexpected section title.
+;    RST499, # Previously unseen severe error, not yet assigned a unique code.
+;    DAR001, # The docstring was not parsed correctly due to a syntax error.
+;    DAR002, # An argument/exception lacks a description
+;    DAR003, # A line is under-indented or over-indented.
+;    DAR004, # The docstring contains an extra newline where it shouldn't.
+;    DAR005, # The item contains a type section (parentheses), but no type.
+;    DAR101, # The docstring is missing a parameter in the definition.
+;    DAR102, # The docstring contains a parameter not in function.
+;    DAR103, # The docstring parameter type doesn't match function.
+;    DAR104, # (disabled) The docstring parameter has no type specified
+;    DAR105, # The docstring parameter type is malformed.
+;    DAR201, # The docstring is missing a return from definition.
+;    DAR202, # The docstring has a return not in definition.
+;    DAR203, # The docstring parameter type doesn't match function.
+;    DAR301, # The docstring is missing a yield present in definition.
+;    DAR302, # The docstring has a yield not in definition.
+;    DAR401, # The docstring is missing an exception raised.
+;    DAR402, # The docstring describes an exception not explicitly raised.
+;    DAR501, # The docstring describes a variable which is not defined.
+;    WPS000, # Happens when we get unhandled exception during the linting process.
+;    WPS100, # Forbid blacklisted module names.
+;    WPS101, # Forbid magic names (except some whitelisted ones).
+;    WPS102, # Forbid module names that do not match our pattern.
+;    WPS110, # Forbid blacklisted variable names.
+;    WPS111, # Forbid short variable or module names.
+;    WPS112, # Forbid private name pattern.
+;    WPS113, # Forbid using the same alias as the original name in imports.
+;    WPS114, # Forbid names with underscored numbers pattern.
+;    WPS115, # Require snake_case for naming class attributes.
+;    WPS116, # Forbid using more than one consecutive underscore in variable names.
+;    WPS117, # Forbid naming variables self, cls, or mcs.
+;    WPS118, # Forbid long variable or module names.
+;    WPS119, # Forbid unicode names.
+;    WPS120, # Forbid trailing _ for names that do not need it.
+;    WPS121, # Forbid using variables that are marked as unused.
+;    WPS122, # Forbid explicit unused variables.
+;    WPS123, # Forbid unused variables with multiple underscores.
+;    WPS124, # Forbid variable or module names which could be difficult to read.
+;    WPS125, # Forbid variable or module names which shadow builtin names.
+;    WPS200, # Forbid modules with complex lines.
+;    WPS201, # Forbid modules with too many imports.
+;    WPS202, # Forbid too many classes and functions in a single module.
+;    WPS203, # Forbid modules with too many imported names.
+;    WPS204, # Forbid overused expressions in a module, function or method.
+;    WPS210, # Forbid too many local variables in the unit of code.
+;    WPS211, # Forbid too many arguments for a function or method.
+;    WPS212, # Forbid placing too many return statements in a function.
+;    WPS213, # Forbid putting too many expressions in a single function.
+;    WPS214, # Forbid too many methods in a single class.
+;    WPS215, # Restrict the maximum number of base classes.
+;    WPS216, # Restrict the maximum number of decorators.
+;    WPS217, # Forbid placing too many await expressions in a function.
+;    WPS218, # Forbid placing too many assert statements into a function.
+;    WPS219, # Forbid consecutive expressions with too deep access level.
+;    WPS220, # Forbid nesting blocks too deep.
+;    WPS221, # Forbid complex lines.
+;    WPS222, # Forbid conditions with too many logical operators.
+;    WPS223, # Forbid too many elif branches.
+;    WPS224, # Forbid too many for statements within a comprehension.
+;    WPS225, # Forbid too many except cases in a single try clause.
+;    WPS226, # Forbid the overuse of string literals.
+;    WPS227, # Forbid returning or yielding tuples that are too long.
+;    WPS228, # Forbid compare expressions that are too long.
+;    WPS229, # Forbid try blocks with bodies that are too long.
+;    WPS230, # Forbid instances with too many public attributes.
+;    WPS231, # Forbid functions with too much cognitive complexity.
+;    WPS232, # Forbid modules with average cognitive complexity that is too high.
+;    WPS233, # Forbid call chains that are too long.
+;    WPS234, # Forbid overly complex annotations.
+;    WPS235, # Forbid from ... import ... with too many imported names.
+;    WPS236, # Forbid using too many variables to unpack a tuple.
+;    WPS237, # Forbids f strings that are too complex.
+;    WPS238, # Forbids too many raise statements in a function.
+;    WPS300, # Forbid imports relative to the current folder.
+;    WPS301, # Forbid imports like import os.path.
+;    WPS302, # Forbid u string prefix.
+;    WPS303, # Forbid underscores (_) in numbers.
+;    WPS304, # Forbid partial floats like .05 or 23..
+;    WPS305, # Forbid f strings.
+    WPS306, # Forbid writing classes without base classes.
+;    WPS307, # Forbid multiple if statements inside list comprehensions.
+;    WPS308, # Forbid comparing between two literals.
+;    WPS309, # Forbid comparisons where the argument doesn’t come first.
+;    WPS310, # Forbid uppercase X, O, B, and E in numbers.
+;    WPS311, # Forbid comparisons with multiple in checks.
+;    WPS312, # Forbid comparisons of a variable to itself.
+;    WPS313, # Enforce separation of parenthesis from keywords with spaces.
+;    WPS314, # Forbid using if statements that use invalid conditionals.
+;    WPS315, # Forbid extra object in parent classes list.
+;    WPS316, # Forbid multiple assignment targets for context managers.
+;    WPS317, # Forbid incorrect indentation for parameters.
+;    WPS318, # Forbid extra indentation.
+;    WPS319, # Forbid brackets in the wrong position.
+;    WPS320, # Forbid multi-line function type annotations.
+;    WPS321, # Forbid uppercase string modifiers.
+;    WPS322, # Forbid triple quotes for singleline strings.
+;    WPS323, # Forbid % formatting on strings.
+;    WPS324, # Enforce consistent return statements.
+;    WPS325, # Enforce consistent yield statements.
+;    WPS326, # Forbid implicit string concatenation.
+;    WPS327, # Forbid meaningless continue in loops.
+;    WPS328, # Forbid meaningless nodes.
+;    WPS329, # Forbid meaningless except cases.
+;    WPS330, # Forbid unnecessary operators in your code.
+;    WPS331, # Forbid local variables that are only used in return statements.
+;    WPS332, # Found walrus operator.
+;    WPS333, # Forbid implicit complex comparison expressions.
+;    WPS334, # Forbid reversed order complex comparison expressions.
+;    WPS335, # Forbid wrong for loop iter targets.
+;    WPS336, # Forbid explicit string concatanation in favour of .format method.
+;    WPS337, # Forbid multiline conditions.
+;    WPS338, # Forbid incorrect order of methods inside a class.
+;    WPS339, # Forbid meaningless zeros.
+;    WPS340, # Forbid extra + signs in the exponent.
+;    WPS341, # Forbid letters as hex numbers.
+;    WPS342, # Forbid \\ escape sequences inside regular strings.
+;    WPS343, # Forbid uppercase complex number suffix.
+;    WPS344, # Forbid explicit division (or modulo) by zero.
+;    WPS345, # Forbid meaningless math operations with 0 and 1.
+;    WPS346, # Forbid double minus operations.
+;    WPS347, # Forbid imports that may cause confusion outside of the module.
+    WPS348, # Forbid starting lines with a dot.
+;    WPS349, # Forbid redundant components in a subscript’s slice.
+;    WPS350, # Enforce using augmented assign pattern.
+;    WPS351, # Forbid unnecessary literals in your code.
+;    WPS352, # Forbid multiline loops.
+;    WPS353, # Forbid yield from with several nodes.
+;    WPS354, # Forbid consecutive yield expressions.
+;    WPS355, # Forbid useless blank lines before and after brackets.
+;    WPS356, # Forbid unnecessary iterable unpacking.
+;    WPS357, # Forbid using \r (carriage return) in line breaks.
+;    WPS358, # Forbid using float zeros: 0.0.
+;    WPS359, # Forbids to unpack iterable objects to lists.
+;    WPS360, # Forbid the use of raw strings when there is no backslash in the string.
+;    WPS361, # Forbids inconsistent newlines in comprehensions.
+;    WPS362, # Forbid assignment to a subscript slice.
+    WPS400, # Restrict various control (such as magic) comments.
+;    WPS401, # Forbid empty doc comments (#:).
+;    WPS402, # Forbid too many # noqa comments.
+;    WPS403, # Forbid too many # pragma: no cover comments.
+;    WPS404, # Forbid complex defaults.
+;    WPS405, # Forbid anything other than ast.Name to define loop variables.
+;    WPS406, # Forbid anything other than ast.Name to define contexts.
+;    WPS407, # Forbid mutable constants on a module level.
+;    WPS408, # Forbid using the same logical conditions in one expression.
+;    WPS409, # Forbid heterogeneous operators in one comparison.
+;    WPS410, # Forbid some module-level variables.
+;    WPS411, # Forbid empty modules.
+;    WPS412, # Forbid logic inside __init__ module.
+;    WPS413, # Forbid __getattr__ and __dir__ module magic methods.
+;    WPS414, # Forbid tuple unpacking with side-effects.
+;    WPS415, # Forbid the same exception class in multiple except blocks.
+;    WPS416, # Forbid yield keyword inside comprehensions.
+;    WPS417, # Forbid duplicate items in hashes.
+;    WPS418, # Forbid exceptions inherited from BaseException.
+;    WPS419, # Forbid multiple returning paths with try / except case.
+;    WPS420, # Forbid some python keywords.
+;    WPS421, # Forbid calling some built-in functions.
+;    WPS422, # Forbid __future__ imports.
+;    WPS423, # Forbid NotImplemented exception.
+;    WPS424, # Forbid BaseException exception.
+;    WPS425, # Forbid booleans as non-keyword parameters.
+;    WPS426, # Forbid lambda inside loops.
+;    WPS427, # Forbid unreachable code.
+;    WPS428, # Forbid statements that do nothing.
+;    WPS429, # Forbid multiple assignments on the same line.
+;    WPS430, # Forbid nested functions.
+;    WPS431, # Forbid nested classes.
+;    WPS432, # Forbid magic numbers.
+;    WPS433, # Forbid imports nested in functions.
+;    WPS434, # Forbid assigning a variable to itself.
+;    WPS435, # Forbid multiplying lists.
+;    WPS436, # Forbid importing protected modules.
+;    WPS437, # Forbid protected attributes and methods.
+;    WPS438, # Forbid raising StopIteration inside generators.
+;    WPS439, # Forbid Unicode escape sequences in binary strings.
+;    WPS440, # Forbid overlapping local and block variables.
+;    WPS441, # Forbid control variables after the block body.
+;    WPS442, # Forbid shadowing variables from outer scopes.
+;    WPS443, # Forbid explicit unhashable types of asset items and dict keys.
+;    WPS444, # Forbid explicit falsely-evaluated conditions with several keywords.
+;    WPS445, # Forbid incorrectly named keywords in starred dicts.
+;    WPS446, # Forbid approximate constants.
+;    WPS447, # Forbid using the alphabet as a string.
+;    WPS448, # Forbid incorrect order of except.
+;    WPS449, # Forbid float keys.
+;    WPS450, # Forbid importing protected objects from modules.
+;    WPS451, # Forbid positional only or / arguments.
+;    WPS452, # Forbid break and continue in a finally block.
+;    WPS453, # Forbid executing a file with shebang incorrectly set.
+;    WPS454, # Forbid raising Exception or BaseException.
+;    WPS455, # Forbids using non-trivial expressions as a parameter for except.
+;    WPS456, # Forbids using float("NaN") construct to generate NaN.
+;    WPS457, # Forbids use of infinite while True: loops.
+;    WPS458, # Forbids to import from already imported modules.
+;    WPS459, # Forbids comparisons with float and complex.
+;    WPS460, # Forbids to have single element destructuring.
+;    WPS461, # Forbids to use specific inline ignore violations.
+;    WPS462, # Forbids direct usage of multiline strings.
+;    WPS463, # Forbids to have functions starting with get_ without returning a value.
+;    WPS464, # Forbid empty comments.
+;    WPS465, # Forbid comparisons between bitwise and boolean expressions.
+;    WPS466, # Forbid using complex grammar for using decorators.
+;    WPS467, # Forbid using a bare raise keyword outside of except.
+;    WPS468, # Forbid using a placeholder (_) with enumerate.
+;    WPS469, # Forbid raising an exception from itself.
+;    WPS470, # Forbid kwarg unpacking in class definition.
+;    WPS471, # Forbid consecutive slices.
+;    WPS472, # Forbid getting first element using unpacking.
+;    WPS500, # Forbid else without break in a loop.
+;    WPS501, # Forbid finally in try block without except block.
+;    WPS502, # Forbid simplifiable if conditions.
+;    WPS503, # Forbid useless else cases in returning functions.
+;    WPS504, # Forbid negated conditions together with else clause.
+;    WPS505, # Forbid nested try blocks.
+;    WPS506, # Forbid useless proxy lambda expressions.
+;    WPS507, # Forbid unpythonic zero-length compare.
+;    WPS508, # Forbid not with compare expressions.
+;    WPS509, # Forbid nesting ternary expressions in certain places.
+;    WPS510, # Forbid in with static containers except set nodes.
+;    WPS511, # Forbid multiple isinstance calls on the same variable.
+;    WPS512, # Forbid multiple isinstance calls with single-item tuples.
+;    WPS513, # Forbid implicit elif conditions.
+;    WPS514, # Forbid multiple equality comparisons with the same variable.
+;    WPS515, # Forbid open() without a context manager.
+;    WPS516, # Forbid comparing types with type() function.
+;    WPS517, # Forbid useless starred expressions.
+;    WPS518, # Forbid implicit enumerate() calls.
+;    WPS519, # Forbid implicit sum() calls.
+;    WPS520, # Forbid comparing with explicit falsy constants.
+;    WPS521, # Forbid comparing values with constants using is or is not.
+;    WPS522, # Forbid implicit primitives in the form of lambda functions.
+;    WPS523, # Forbid unpythonic variable swaps.
+;    WPS524, # Forbid misrefactored self assignment.
+;    WPS525, # Forbid comparisons where in is compared with single item container.
+;    WPS526, # Forbid yield inside for loop instead of yield from.
+;    WPS527, # Require tuples as arguments for certain functions.
+;    WPS528, # Forbid implicit .items() iterator.
+;    WPS529, # Forbid implicit .get() dict method.
+;    WPS530, # Forbid implicit negative indexes.
+;    WPS531, # Forbid if statements that simply return booleans in functions or methods.
+;    WPS600, # Forbid subclassing lowercase builtins.
+;    WPS601, # Forbid shadowing class level attributes with instance level attributes.
+;    WPS602, # Forbid @staticmethod decorator.
+;    WPS603, # Forbid certain magic methods.
+;    WPS604, # Forbid incorrect nodes inside class definitions.
+;    WPS605, # Forbid methods without any arguments.
+;    WPS606, # Forbid anything other than a class as a base class.
+;    WPS607, # Forbid incorrect __slots__ definition.
+;    WPS608, # Forbid super() with parameters or outside of methods.
+;    WPS609, # Forbid directly calling certain magic attributes and methods.
+;    WPS610, # Forbid certain async magic methods
+;    WPS611, # Forbid yield inside of certain magic methods.
+;    WPS612, # Forbid useless overwritten methods.
+;    WPS613, # Forbid super() with incorrect method or property access.
+;    WPS614, # Forbids descriptors in regular functions.
+;    WPS615, # Forbids to use getters and setters in objects.

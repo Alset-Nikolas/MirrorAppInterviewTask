@@ -1,5 +1,4 @@
-from src_mirror_back.app.db.creators.exceptions import (ErrorCreateObject,
-                                                        ErrorUniqObjectExist)
+from src_mirror_back.app.db.creators.exceptions import ErrorCreateObject, ErrorUniqObjectExist
 from src_mirror_back.app.db.creators.faker import fake
 from src_mirror_back.app.db.creators.meta_base import FactoryUseMode
 

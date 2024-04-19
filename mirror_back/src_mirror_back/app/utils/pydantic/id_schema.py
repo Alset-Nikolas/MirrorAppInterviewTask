@@ -4,8 +4,8 @@ from pydantic import BaseModel
 
 
 class IdSchemaMixin(BaseModel):
-	id: int
+    id: int
 
 
 class IdUpdateSchemaMixin(BaseModel):
-	id: Optional[int] = None
+    id: Optional[int] = None
