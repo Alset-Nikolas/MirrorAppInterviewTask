@@ -1,7 +1,6 @@
 from typing import Optional
 
 from pydantic import BaseModel
-
 from src_mirror_back.app.utils.pydantic import IdUpdateSchemaMixin
 
 

@@ -1,11 +1,11 @@
 from datetime import datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import BigInteger, Integer, String, Column, DateTime, Date
-
+from sqlalchemy import BigInteger, Column, Date, DateTime, Integer, String
 from src_mirror_back.app.extensions.sqlalchemy import Base
 from src_mirror_back.app.utils.sqlalchemy import BaseModelMixin
-from src_mirror_back.app.utils.sqlalchemy.association_column import AssociationColumn, association_relationship
+from src_mirror_back.app.utils.sqlalchemy.association_column import (
+    AssociationColumn, association_relationship)
 
 if TYPE_CHECKING:
 	from src_mirror_back.app.db.orm import Executor
@@ -18,7 +18,7 @@ class Order(Base, BaseModelMixin):
 	id: int = Column(BigInteger, primary_key=True)
 	number_apartment: int = Column(Integer)
 	nickname: str = Column(String)
-	breed_name:str = Column(String)
+	breed_name: str = Column(String)
 	date = Column(Date, index=True)
 	start_time: datetime = Column(DateTime(timezone=True))
 	end_time: datetime = Column(DateTime(timezone=True))

@@ -2,10 +2,9 @@ import datetime
 from typing import Any, Dict
 
 from sqlalchemy import select
-
 from src_mirror_back.app.db.creators import ErrorCreateObject
 from src_mirror_back.app.db.creators.meta_base import BaseFactory
-from src_mirror_back.app.db.orm import Order, Executor
+from src_mirror_back.app.db.orm import Executor, Order
 
 
 class OrderCreator(BaseFactory[Order]):

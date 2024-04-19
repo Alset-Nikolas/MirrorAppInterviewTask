@@ -2,18 +2,9 @@ import datetime
 
 import pytest
 from fastapi import HTTPException
-from fastapi_jsonapi import QueryStringManager
-from sentry_sdk.integrations import fastapi
 from sqlalchemy.ext.asyncio import AsyncSession
-
 from src_mirror_back.app.api.rest.schemas.requests import OrderCreateSchema
 from src_mirror_back.app.api.rest.views.order import OrderList
-from src_mirror_back.app.config import settings
-from src_mirror_back.app.db.creators import OrderCreator
-from src_mirror_back.app.db.orm import Order
-from src_mirror_back.app.db.schemas.order import OrderSchema
-from src_mirror_back.tests.conftest import deleted
-from src_mirror_back.tests.conftest import recreate_db
 
 
 class TestOrderList:
@@ -45,7 +36,8 @@ class TestOrderList:
 					nickname='test_nickname',
 					breed_name='test_breed_name',
 					start_time=datetime.datetime(year=day.year, month=day.month, day=day.day, hour=23, minute=30),
-					end_time=datetime.datetime(year=day.year, month=day.month, day=day.day, hour=0, minute=0)+datetime.timedelta(days=1),
+					end_time=datetime.datetime(year=day.year, month=day.month, day=day.day, hour=0,
+					                           minute=0) + datetime.timedelta(days=1),
 					executor_id=1,
 				)
 			)
@@ -146,4 +138,3 @@ class TestOrderList:
 				executor_id=2,
 			)
 		)
-

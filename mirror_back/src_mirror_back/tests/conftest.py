@@ -11,7 +11,6 @@ from alembic.config import Config
 from sqlalchemy import create_engine
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy_utils import create_database, database_exists, drop_database
-
 from src_mirror_back import tests
 from src_mirror_back.app.config import settings
 from src_mirror_back.app.extensions.logging import logger
@@ -114,4 +113,3 @@ def pytest_configure():
 	setup_database()
 
 	logger.debug('Done configuring pytest')
-
