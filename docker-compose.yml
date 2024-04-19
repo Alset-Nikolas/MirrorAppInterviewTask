@@ -2,6 +2,7 @@ version: "3"
 services:
   mirror_back:
     build: ./mirror_back
+    restart: unless-stopped
     container_name: mirror.mirror_back
     volumes:
       - ./mirror_back:/usr/mirror_back
@@ -23,6 +24,7 @@ services:
 
   mirror_postgres:
     build: ./postgres
+    restart: unless-stopped
     container_name: mirror.mirror_postgres
     volumes:
       - ./data:/var/lib/postgresql/data/
